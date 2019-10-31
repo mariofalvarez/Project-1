@@ -1,4 +1,6 @@
 $(document).ready(function(){
+//   console.log('hello world');
+
   var firebaseConfig = {
     apiKey: "AIzaSyATB51a2W2gJk5B0_xzLMPoH6yw2bV5WuI",
     authDomain: "project-1-76180.firebaseapp.com",
