@@ -1,3 +1,11 @@
 body {
     background-color:grey;
 }
+
+#navbar {
+    padding-left: 150px;
+}
+
+.form-inline {
+    padding-right: 150px;
+}
