@@ -3,9 +3,16 @@ body {
 }
 
 .carouselContainer {
-    width: 700px;
+    width: 100%;
     margin: 0 auto;
-    margin-top: 200px;
+}
+
+#navbar {
+    padding-left: 150px;
+}
+
+.form-inline {
+    padding-right: 150px;
 }
 
 #navbar {
