@@ -1,5 +1,9 @@
 body {
-    background-color:grey;
+    background-color:white;
+    margin: 0 10% 0 10%;
+}
+.bg-light {
+    background-color: #565a8c!important;
 }
 
 .carouselContainer {
@@ -7,8 +11,15 @@ body {
     margin: 0 auto;
 }
 
+.btn-outline-success {
+    color: white;
+    border-color: white;
+}
 #navbar {
     padding-left: 150px;
+}
+.navbar-brand {
+    color: white !important;
 }
 
 .form-inline {
