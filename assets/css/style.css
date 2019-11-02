@@ -15,3 +15,7 @@ body {
 .form-inline {
     padding-right: 150px;
 }
+
+.dropdown-menu {
+    margin-left: 500px;
+}
