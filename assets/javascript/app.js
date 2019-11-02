@@ -13,5 +13,7 @@ $(document).ready(function(){
   firebase.initializeApp(firebaseConfig);
   
   const db = firebase.initializeApp(firebaseConfig);
-});
 
+
+  
+});

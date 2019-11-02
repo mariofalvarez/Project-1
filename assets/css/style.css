@@ -1,0 +1,9 @@
+body {
+    background-color:grey;
+}
+
+.carouselContainer {
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 200px;
+}
