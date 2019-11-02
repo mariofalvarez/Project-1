@@ -1,5 +1,4 @@
 $(document).ready(function(){
-//   console.log('hello world');
 
   var firebaseConfig = {
     apiKey: "AIzaSyATB51a2W2gJk5B0_xzLMPoH6yw2bV5WuI",
@@ -14,4 +13,7 @@ $(document).ready(function(){
   firebase.initializeApp(firebaseConfig);
   
   const db = firebase.initializeApp(firebaseConfig);
+
+
+  
 });
