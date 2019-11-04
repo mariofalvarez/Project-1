@@ -27,6 +27,14 @@ $.ajax({
 }).then(response => {
   const results = response._embedded.events;
   for (var i = 0; i < results.length; i++) {
-    console.log(results[i]);
+    console.log(results[i].name);
+    var eventDiv = $("<div>");
+    var eventName = results[i].name;
+    var eventImg = $("<img>");
+    eventImg.attr("src", results[i].images[i].url);
+    eventDiv.append(eventImg);
+    eventDiv.append(eventName);
+
+    $(".event_container").append(eventDiv);
   }
 });
