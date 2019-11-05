@@ -1,12 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./assets/css/calendar.css">
+
     <title>Calendar</title>
 </head>
+
 <body>
-    
+
+    <div class="page">
+
+        <div style="width:100%; max-width:600px; display:inline-block;">
+            <div class="monthly" id="mycalendar"></div>
+        </div>
+        <br><br>
+
+        <div style="display:inline-block; width:250px;">
+            <input type="text" id="mytarget" value="Select Date">
+            <div class="monthly" id="mycalendar2"></div>
+        </div>
+        <br>
+    </div>
+
+    <!--Qeury JS-->
+    <script src="./assets/javascript/query.js"></script>
+    <!--calendar JS-->
+    <script src="./assets/javascript/calendar.js"></script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#mycalendar').monthly({
+                mode: 'event',
+                //jsonUrl: 'events.json',
+                //dataType: 'json'
+                xmlUrl: 'events.xml'
+            });
+            $('#mycalendar2').monthly({
+                mode: 'picker',
+                target: '#mytarget',
+                setWidth: '250px',
+                startHidden: true,
+                showTrigger: '#mytarget',
+                stylePast: true,
+                disablePast: true
+            });
+            switch (window.location.protocol) {
+                case 'http:':
+                case 'https:':
+                    // running on a server, should be good.
+                    break;
+                case 'file:':
+                    alert('Just a heads-up, events will not work when run locally.');
+            }
+        });
+    </script>
 </body>
+
 </html>
