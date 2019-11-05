@@ -27,7 +27,6 @@ $.ajax({
 }).then(response => {
   const results = response._embedded.events;
   for (var i = 0; i < results.length; i++) {
-    console.log(results[i].name);
     var eventDiv = $("<div>");
     var eventName = results[i].name;
     var eventImg = $("<img>");
@@ -44,3 +43,4 @@ $.ajax({
     $(".event_container").append(eventDiv);
   }
 });
+
