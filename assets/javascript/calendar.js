@@ -269,7 +269,7 @@
                         $.get(url, { now: $.now() }, function (data) {
                             addEventsFromString(data, month, year);
                         }, options.dataType).fail(function () {
-                            console.error("Monthly.js failed to import " + remoteUrl + ". Please check for the correct path and " + options.dataType + " syntax.");
+                          //  console.error("Monthly.js failed to import " + remoteUrl + ". Please check for the correct path and " + options.dataType + " syntax.");
                         });
                     }
                 }
