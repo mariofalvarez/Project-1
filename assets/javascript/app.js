@@ -9,7 +9,7 @@ $(document).ready(function() {
     appId: "1:280561902099:web:4c6157d4f389b12bd795e6"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+  //firebase.initializeApp(firebaseConfig);
 
   const db = firebase.initializeApp(firebaseConfig);
 });

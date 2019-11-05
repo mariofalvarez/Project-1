@@ -12,7 +12,7 @@ body {
     margin-top: 75px;
 }
 
-.btn-outline-success {
+.btn-outline-info {
     color: white;
     border-color: white;
 }
@@ -29,4 +29,8 @@ body {
 
 .dropdown-menu {
     margin-left: 500px;
+}
+
+.jimsDiv {
+    margin-left: 60%;
 }
