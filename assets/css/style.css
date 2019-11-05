@@ -15,6 +15,19 @@ body {
 .btn-outline-success {
     color: white;
     border-color: white;
+<<<<<<< HEAD
+=======
+}
+#navbar {
+    padding-left: 150px;
+}
+.navbar-brand {
+    color: white !important;
+}
+
+.form-inline {
+    padding-right: 150px;
+>>>>>>> 7af4f754dc8da6709b67a81d1ec1aa9d86221cd8
 }
 #navbar {
     padding-left: 150px;
