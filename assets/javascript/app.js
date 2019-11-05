@@ -30,17 +30,26 @@ $.ajax({
     var eventDiv = $("<div>");
     var eventName = results[i].name;
     var eventImg = $("<img>");
+    var addBtn = $("<button>Add To Calendar</button>");
     var eventDate = results[i].dates.start.localDate;
     var eventTime = results[i].dates.start.localTime;
+    addBtn.addClass("addToCalendar");
     eventImg.attr("src", results[i].images[i].url);
     eventImg.width("64px");
     eventImg.height("64px");
-    eventDiv.append(eventImg);
-    eventDiv.append(eventName);
-    eventDiv.append(eventDate);
-    eventDiv.append(eventTime);
+    eventDiv.append(eventImg, eventName, eventDate, eventTime, addBtn);
 
     $(".event_container").append(eventDiv);
   }
 });
 
+$(".event_container").on("click", ".addToCalendar", function() {
+  console.log("Sports are lame");
+});
+
+$("#SearchBtn").on("click", function(e) {
+  e.preventDefault();
+  console.log("searchEvents");
+  // if the word in the search bar is contained in the name of the event
+  // show event.
+});
