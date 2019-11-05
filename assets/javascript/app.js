@@ -33,11 +33,19 @@ $.ajax({
     var addBtn = $("<button>Add To Calendar</button>");
     var eventDate = results[i].dates.start.localDate;
     var eventTime = results[i].dates.start.localTime;
+    var eventDateTime = results[i].dates.start.dateTime;
     addBtn.addClass("addToCalendar");
     eventImg.attr("src", results[i].images[i].url);
     eventImg.width("64px");
     eventImg.height("64px");
-    eventDiv.append(eventImg, eventName, eventDate, eventTime, addBtn);
+    eventDiv.append(
+      eventImg,
+      eventName,
+      eventDate,
+      eventTime,
+      addBtn,
+      eventDateTime
+    );
 
     $(".event_container").append(eventDiv);
   }
@@ -53,3 +61,11 @@ $("#SearchBtn").on("click", function(e) {
   // if the word in the search bar is contained in the name of the event
   // show event.
 });
+
+// testing();
+
+// function testing() {
+//   var eventDateTime = results[i].dates.start.dateTime;
+
+//   var newTime = moment(eventDateTime).format("LLLL");
+// }
