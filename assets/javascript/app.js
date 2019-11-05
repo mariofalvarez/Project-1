@@ -31,9 +31,15 @@ $.ajax({
     var eventDiv = $("<div>");
     var eventName = results[i].name;
     var eventImg = $("<img>");
+    var eventDate = results[i].dates.start.localDate;
+    var eventTime = results[i].dates.start.localTime;
     eventImg.attr("src", results[i].images[i].url);
+    eventImg.width("64px");
+    eventImg.height("64px");
     eventDiv.append(eventImg);
     eventDiv.append(eventName);
+    eventDiv.append(eventDate);
+    eventDiv.append(eventTime);
 
     $(".event_container").append(eventDiv);
   }
