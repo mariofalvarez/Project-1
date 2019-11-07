@@ -25,8 +25,9 @@ $('.btn').on('click', function (e) {
     method: "GET",
     url: weatherUrl
   }).then(response => {
-    $('.weatherInfo').append(Math.floor((((response.data[0].temp) * 9) / 5) + 32));
+    $('.weatherInfo').text(Math.floor((((response.data[0].temp) * 9) / 5) + 32));
     $('.weatherInfo').append(`<div><span>&#8457;</span></div>`);
+    
   });
   
   // Ticketmaster api
@@ -47,7 +48,7 @@ $('.btn').on('click', function (e) {
       eventImg.width("64px");
       eventImg.height("64px");
        eventDiv.append(eventImg, eventName, convertedDT, addBtn);
-      $('.event-container').append(eventDiv);
+      $('.event-container').prepend(eventDiv);
     }
   });
   document.getElementById('text').value = "";
