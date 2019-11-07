@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   var firebaseConfig = {
     apiKey: "AIzaSyATB51a2W2gJk5B0_xzLMPoH6yw2bV5WuI",
     authDomain: "project-1-76180.firebaseapp.com",
@@ -19,7 +19,8 @@ $('.btn').on('click', function (e) {
 
   const weatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&key=c2e38863824c4fbaa3e29a7d10f11bbf`;
   const queryUrl = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=SeGSW2oWcueAXwOb0zleD2J63hEIWBjY&city=${newCity}`;
-
+  
+  // Weather api
   $.ajax({
     method: "GET",
     url: weatherUrl
@@ -27,7 +28,8 @@ $('.btn').on('click', function (e) {
     $('.weatherInfo').append(Math.floor((((response.data[0].temp) * 9) / 5) + 32));
     $('.weatherInfo').append(`<div><span>&#8457;</span></div>`);
   });
-
+  
+  // Ticketmaster api
   $.ajax({
     url: queryUrl,
     method: "GET"
@@ -37,15 +39,14 @@ $('.btn').on('click', function (e) {
       let eventDiv = $("<div>");
       let eventName = results[i].name;
       let eventImg = $("<img>");
-      let eventDate = results[i].dates.start.localDate;
-      let eventTime = results[i].dates.start.localTime;
+      let addBtn = $("<button>Add To Calendar</button>");
+      let eventDateTime = results[i].dates.start.dateTime;
+      let convertedDT = moment(eventDateTime).format("LLLL");
+      addBtn.addClass("addToCalendar");
       eventImg.attr("src", results[i].images[i].url);
       eventImg.width("64px");
       eventImg.height("64px");
-      eventDiv.append(eventImg);
-      eventDiv.append(eventName);
-      eventDiv.append(eventDate);
-      eventDiv.append(eventTime);
+       eventDiv.append(eventImg, eventName, convertedDT, addBtn);
       $('.event-container').append(eventDiv);
     }
   });
@@ -55,6 +56,7 @@ $('.btn').on('click', function (e) {
 var events = [];
 $(".event-container").on("click", ".addToCalendar", function () {
   console.log("Sports are lame");
+
 });
 
 $("#searchBtn").on("click", function (e) {
