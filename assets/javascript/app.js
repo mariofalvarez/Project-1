@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   var firebaseConfig = {
     apiKey: "AIzaSyATB51a2W2gJk5B0_xzLMPoH6yw2bV5WuI",
     authDomain: "project-1-76180.firebaseapp.com",
@@ -16,16 +16,15 @@ $(document).ready(function () {
 
 var events = [];
 
-//Function to display events from the search 
+//Function to display events from the search
 
-var x = $(this).data('search');
-
-
+var x = $(this).data("search");
 
 let api_key = "SeGSW2oWcueAXwOb0zleD2J63hEIWBjY";
 
 const queryUrl =
-  "https://app.ticketmaster.com/discovery/v2/events.json?size=8&apikey=" + api_key;
+  "https://app.ticketmaster.com/discovery/v2/events.json?size=8&apikey=" +
+  api_key;
 
 //console.log(queryUrl);
 
@@ -41,39 +40,20 @@ $.ajax({
     var eventName = results[i].name;
     var eventImg = $("<img>");
     var addBtn = $("<button>Add To Calendar</button>");
-    var eventDate = results[i].dates.start.localDate;
-    var eventTime = results[i].dates.start.localTime;
     var eventDateTime = results[i].dates.start.dateTime;
+    var convertedDT = moment(eventDateTime).format("LLLL");
     addBtn.addClass("addToCalendar");
     eventImg.attr("src", results[i].images[i].url);
     eventImg.width("64px");
     eventImg.height("64px");
-    eventDiv.append(
-      eventImg,
-      eventName,
-      eventDate,
-      eventTime,
-      addBtn,
-      eventDateTime
-    );
-
-    //var eventTime = results[i].dates.start.localTime;
-    eventImg.attr("src", results[i].images[i].url);
-    eventImg.width("64px");
-    eventImg.height("64px");
-    eventDiv.append(eventImg);
-    eventDiv.append(eventName);
-    eventDiv.append(eventDate);
-    //eventDiv.append(eventTime);
+    eventDiv.append(eventImg, eventName, convertedDT, addBtn);
 
     $(".event_container").append(eventDiv);
   }
-
-
 });
 
 $(".event_container").on("click", ".addToCalendar", function() {
-  console.log("Sports are lame");
+  console.log("Is this too much?");
 });
 
 $("#SearchBtn").on("click", function(e) {
