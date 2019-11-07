@@ -60,7 +60,7 @@ $(".btn").on("click", function(e) {
 });
 var events = [];
 $(".event-container").on("click", ".addToCalendar", function() {
-  console.log(events);
+  console.log($(this).attr("data"));
 });
 
 $("#searchBtn").on("click", function(e) {
