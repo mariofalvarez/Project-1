@@ -52,34 +52,13 @@
     <!-- calendar JS-->
     <script src="./assets/javascript/calendar.js"></script>
     <script type="text/javascript">
-
-        $(window).load(function () {
-            $('#mycalendar').monthly({
-                mode: 'event',
-                //jsonUrl: 'events.json',
-                //dataType: 'json'
-                xmlUrl: 'events.xml'
-            });
-            $('#mycalendar2').monthly({
-                mode: 'picker',
-                target: '#mytarget',
-                setWidth: '250px',
-                startHidden: true,
-                showTrigger: '#mytarget',
-                stylePast: true,
-                disablePast: true
-            });
-            switch (window.location.protocol) {
-                case 'http:':
-                case 'https:':
-                    // running on a server, should be good.
-                    break;
-                case 'file:':
-                    //  alert('Just a heads-up, events will not work when run locally.');
-            }
-
+      $(window).load(function() {
+        $("#mycalendar").monthly({
+          mode: "event",
+          //jsonUrl: 'events.json',
+          //dataType: 'json'
+          xmlUrl: "events.xml"
         });
-          
         $("#mycalendar2").monthly({
           mode: "picker",
           target: "#mytarget",
@@ -98,8 +77,25 @@
           //  alert('Just a heads-up, events will not work when run locally.');
         }
       });
-    </script>
 
+      $("#mycalendar2").monthly({
+        mode: "picker",
+        target: "#mytarget",
+        setWidth: "250px",
+        startHidden: true,
+        showTrigger: "#mytarget",
+        stylePast: true,
+        disablePast: true
+      });
+      switch (window.location.protocol) {
+        case "http:":
+        case "https:":
+          // running on a server, should be good.
+          break;
+        case "file:":
+        //  alert('Just a heads-up, events will not work when run locally.');
+      }
+    </script>
 
     <script src="./assets/javascript/app.js"></script>
   </body>
