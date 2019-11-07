@@ -5,31 +5,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <!--BootstrapCDN-->
+  
+  <!-- Bootstrap CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <!--User CSS-->
+  <!-- User CSS -->
+
   <link rel="stylesheet" href="./assets/css/style.css" />
   <title>Event Toast</title>
 </head>
 
 <body>
-  <!--Nav Bar-->
+  <!-- NavBar -->
   <nav class="navbar navbar-light bg-light" id="navbar">
-    <a class="navbar-brand">Event Toasts</a>
+    <a class="navbar-brand">Event Toast</a>
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="SearchBtn">
-        Search
-      </button>
-      <!-- container for events -->
-      <a id='link' href="./calendar.html">Link to Calendar</a>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search City Here" id="text">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBtn">Search</button>
+      <div class="weatherInfo"></div>
     </form>
+    <!-- Calendar Container -->
+    <a id="link" href="./calendar.html">Link to Calendar</a>
   </nav>
 
-  <!--Carasel Code -->
+  <!-- Carasel -->
   <div class="carouselContainer">
-
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -56,29 +56,23 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-
-      <!-- container for events -->
-      <div class="event_container"></div>
     </div>
+  </div>
 
-    <!--Moment JS CDN-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+  <!-- Event Container -->
+  <div class="event-container"></div>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-    <!--jQuery CDN-->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- Javascript-->
-    <script src="./assets/javascript/app.js"></script>
-
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
-    <!--jQuery CDN-->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!-- Javascript-->
-    <script src="./assets/javascript/app.js"></script>
+  <!--Moment JS CDN-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+  <!--jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!-- Javascript-->
+  <script src="./assets/javascript/app.js"></script>
+  <script src="./assets/javascript/query.js"></script>
+  <script src="./assets/javascript/calendar.js"></script>
 
 </body>
 
