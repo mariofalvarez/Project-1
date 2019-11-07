@@ -19,7 +19,7 @@
                 stylePast: false,
                 target: "",
                 useIsoDateFormat: false,
-                weekStart: 0,	// Sunday
+                weekStart: 0, // Sunday
                 xmlUrl: ""
             };
 
@@ -102,32 +102,32 @@
                 for (var dayNumber = 1; dayNumber <= dayQty; dayNumber++) {
                     // Check if it's a day in the past
                     var isInPast = options.stylePast && (
-                        year < currentYear
-                        || (year === currentYear && (
-                            month < currentMonth
-                            || (month === currentMonth && dayNumber < currentDay)
-                        ))),
+                            year < currentYear ||
+                            (year === currentYear && (
+                                month < currentMonth ||
+                                (month === currentMonth && dayNumber < currentDay)
+                            ))),
                         innerMarkup = '<div class="monthly-day-number">' + dayNumber + '</div><div class="monthly-indicator-wrap"></div>';
                     if (options.mode === "event") {
                         var thisDate = new Date(year, mZeroed, dayNumber, 0, 0, 0, 0);
-                        $(parent + " .monthly-day-wrap").append("<div"
-                            + attr("class", "m-d monthly-day monthly-day-event"
-                                + (isInPast ? " monthly-past-day" : "")
-                                + " dt" + thisDate.toISOString().slice(0, 10)
-                            )
-                            + attr("data-number", dayNumber)
-                            + ">" + innerMarkup + "</div>");
-                        $(parent + " .monthly-event-list").append("<div"
-                            + attr("class", "monthly-list-item")
-                            + attr("id", uniqueId + "day" + dayNumber)
-                            + attr("data-number", dayNumber)
-                            + '><div class="monthly-event-list-date">' + dayNames[thisDate.getDay()] + "<br>" + dayNumber + "</div></div>");
+                        $(parent + " .monthly-day-wrap").append("<div" +
+                            attr("class", "m-d monthly-day monthly-day-event" +
+                                (isInPast ? " monthly-past-day" : "") +
+                                " dt" + thisDate.toISOString().slice(0, 10)
+                            ) +
+                            attr("data-number", dayNumber) +
+                            ">" + innerMarkup + "</div>");
+                        $(parent + " .monthly-event-list").append("<div" +
+                            attr("class", "monthly-list-item") +
+                            attr("id", uniqueId + "day" + dayNumber) +
+                            attr("data-number", dayNumber) +
+                            '><div class="monthly-event-list-date">' + dayNames[thisDate.getDay()] + "<br>" + dayNumber + "</div></div>");
                     } else {
-                        $(parent + " .monthly-day-wrap").append("<a"
-                            + attr("href", "#")
-                            + attr("class", "m-d monthly-day monthly-day-pick" + (isInPast ? " monthly-past-day" : ""))
-                            + attr("data-number", dayNumber)
-                            + ">" + innerMarkup + "</a>");
+                        $(parent + " .monthly-day-wrap").append("<a" +
+                            attr("href", "#") +
+                            attr("class", "m-d monthly-day monthly-day-pick" + (isInPast ? " monthly-past-day" : "")) +
+                            attr("data-number", dayNumber) +
+                            ">" + innerMarkup + "</a>");
                     }
                 }
 
@@ -218,9 +218,9 @@
 
                 if (startTime) {
                     var endTime = _getEventDetail(event, "endtime");
-                    timeHtml = '<div><div class="monthly-list-time-start">' + formatTime(startTime) + "</div>"
-                        + (endTime ? '<div class="monthly-list-time-end">' + formatTime(endTime) + "</div>" : "")
-                        + "</div>";
+                    timeHtml = '<div><div class="monthly-list-time-start">' + formatTime(startTime) + "</div>" +
+                        (endTime ? '<div class="monthly-list-time-end">' + formatTime(endTime) + "</div>" : "") +
+                        "</div>";
                 }
 
                 if (options.linkCalendarToEventUrl && eventURL) {
@@ -228,28 +228,30 @@
                     dayEndTags = "</span></a>";
                 }
 
-                var markupDayStart = dayStartTag
-                    + attr("data-eventid", eventId)
-                    + attr("title", eventTitle)
+                var markupDayStart = dayStartTag +
+                    attr("data-eventid", eventId) +
+                    attr("title", eventTitle)
                     // BG and FG colors must match for left box shadow to create seamless link between dates
-                    + (eventColor ? attr("style", "background:" + eventColor + ";color:" + eventColor) : ""),
-                    markupListEvent = "<a"
-                        + attr("href", eventURL)
-                        + attr("class", "listed-event" + customClass)
-                        + attr("data-eventid", eventId)
-                        + (eventColor ? attr("style", "background:" + eventColor) : "")
-                        + attr("title", eventTitle)
-                        + ">" + eventTitle + " " + timeHtml + "</a>";
+                    +
+                    (eventColor ? attr("style", "background:" + eventColor + ";color:" + eventColor) : ""),
+                    markupListEvent = "<a" +
+                    attr("href", eventURL) +
+                    attr("class", "listed-event" + customClass) +
+                    attr("data-eventid", eventId) +
+                    (eventColor ? attr("style", "background:" + eventColor) : "") +
+                    attr("title", eventTitle) +
+                    ">" + eventTitle + " " + timeHtml + "</a>";
                 for (var index = startDayNumber; index <= endDayNumber; index++) {
                     var doShowTitle = index === showEventTitleOnDay;
                     // Add to calendar view
                     $(parent + ' *[data-number="' + index + '"] .monthly-indicator-wrap').append(
-                        markupDayStart
-                        + attr("class", "monthly-event-indicator" + customClass
+                        markupDayStart +
+                        attr("class", "monthly-event-indicator" + customClass
                             // Include a class marking if this event continues from the previous day
-                            + (doShowTitle ? "" : " monthly-event-continued")
-                        )
-                        + "><span>" + (doShowTitle ? eventTitle : "") + dayEndTags);
+                            +
+                            (doShowTitle ? "" : " monthly-event-continued")
+                        ) +
+                        "><span>" + (doShowTitle ? eventTitle : "") + dayEndTags);
                     // Add to event list
                     $(parent + ' .monthly-list-item[data-number="' + index + '"]')
                         .addClass("item-has-event")
@@ -266,10 +268,12 @@
                     if (remoteUrl) {
                         // Replace variables for month and year to load from dynamic sources
                         var url = String(remoteUrl).replace("{month}", month).replace("{year}", year);
-                        $.get(url, { now: $.now() }, function (data) {
+                        $.get(url, {
+                            now: $.now()
+                        }, function (data) {
                             addEventsFromString(data, month, year);
                         }, options.dataType).fail(function () {
-                          //  console.error("Monthly.js failed to import " + remoteUrl + ". Please check for the correct path and " + options.dataType + " syntax.");
+                            //  console.error("Monthly.js failed to import " + remoteUrl + ". Please check for the correct path and " + options.dataType + " syntax.");
                         });
                     }
                 }
@@ -292,11 +296,20 @@
                 var newValue = "";
                 for (var index = 0; index < parseValue.length; index++) {
                     switch (parseValue[index]) {
-                        case "'": newValue += "&#39;"; break;
-                        case "\"": newValue += "&quot;"; break;
-                        case "<": newValue += "&lt;"; break;
-                        case ">": newValue += "&gt;"; break;
-                        default: newValue += parseValue[index];
+                        case "'":
+                            newValue += "&#39;";
+                            break;
+                        case "\"":
+                            newValue += "&quot;";
+                            break;
+                        case "<":
+                            newValue += "&lt;";
+                            break;
+                        case ">":
+                            newValue += "&gt;";
+                            break;
+                        default:
+                            newValue += parseValue[index];
                     }
                 }
                 return " " + name + "=\"" + newValue + "\"";
@@ -326,7 +339,9 @@
                 if (typeof Intl === "undefined") {
                     return ["Jan", "Feb", "Mar", "Apr", "May", "June", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 }
-                var formatter = new Intl.DateTimeFormat(locale, { month: monthNameFormat });
+                var formatter = new Intl.DateTimeFormat(locale, {
+                    month: monthNameFormat
+                });
                 var names = [];
                 for (var monthIndex = 0; monthIndex < 12; monthIndex++) {
                     var sampleDate = new Date(2017, monthIndex, 1, 0, 0, 0);
@@ -350,7 +365,9 @@
                 if (typeof Intl === "undefined") {
                     return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
                 }
-                var formatter = new Intl.DateTimeFormat(locale, { weekday: weekdayNameFormat }),
+                var formatter = new Intl.DateTimeFormat(locale, {
+                        weekday: weekdayNameFormat
+                    }),
                     names = [],
                     dayIndex = 0,
                     sampleDate = null;

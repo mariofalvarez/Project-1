@@ -10,53 +10,56 @@ $(document).ready(function() {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+});
 
-  const db = firebase.initializeApp(firebaseConfig);
+$('.btn').on('click', function (e) {
+  e.preventDefault();
+  let city = $('.form-control').val();
+  let newCity = $('.form-control').val();
+
+  const weatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?city=${city}&key=c2e38863824c4fbaa3e29a7d10f11bbf`;
+  const queryUrl = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=SeGSW2oWcueAXwOb0zleD2J63hEIWBjY&city=${newCity}`;
+  
+  // Weather api
+  $.ajax({
+    method: "GET",
+    url: weatherUrl
+  }).then(response => {
+    $('.weatherInfo').append(Math.floor((((response.data[0].temp) * 9) / 5) + 32));
+    $('.weatherInfo').append(`<div><span>&#8457;</span></div>`);
+  });
+  
+  // Ticketmaster api
+  $.ajax({
+    url: queryUrl,
+    method: "GET"
+  }).then(data => {
+    const results = data._embedded.events;
+    for (var i = 0; i < results.length; i++) {
+      let eventDiv = $("<div>");
+      let eventName = results[i].name;
+      let eventImg = $("<img>");
+      let addBtn = $("<button>Add To Calendar</button>");
+      let eventDateTime = results[i].dates.start.dateTime;
+      let convertedDT = moment(eventDateTime).format("LLLL");
+      addBtn.addClass("addToCalendar");
+      eventImg.attr("src", results[i].images[i].url);
+      eventImg.width("64px");
+      eventImg.height("64px");
+       eventDiv.append(eventImg, eventName, convertedDT, addBtn);
+      $('.event-container').append(eventDiv);
+    }
+  });
+  document.getElementById('text').value = "";
 });
 
 var events = [];
+$(".event-container").on("click", ".addToCalendar", function () {
+  console.log("Sports are lame");
 
-//Function to display events from the search
-
-var x = $(this).data("search");
-
-let api_key = "SeGSW2oWcueAXwOb0zleD2J63hEIWBjY";
-
-const queryUrl =
-  "https://app.ticketmaster.com/discovery/v2/events.json?size=8&apikey=" +
-  api_key;
-
-//console.log(queryUrl);
-
-$.ajax({
-  method: "GET",
-  url: queryUrl
-}).then(response => {
-  const results = response._embedded.events;
-  //console.log(results);
-
-  for (var i = 0; i < results.length; i++) {
-    var eventDiv = $("<div>");
-    var eventName = results[i].name;
-    var eventImg = $("<img>");
-    var addBtn = $("<button>Add To Calendar</button>");
-    var eventDateTime = results[i].dates.start.dateTime;
-    var convertedDT = moment(eventDateTime).format("LLLL");
-    addBtn.addClass("addToCalendar");
-    eventImg.attr("src", results[i].images[i].url);
-    eventImg.width("64px");
-    eventImg.height("64px");
-    eventDiv.append(eventImg, eventName, convertedDT, addBtn);
-
-    $(".event_container").append(eventDiv);
-  }
 });
 
-$(".event_container").on("click", ".addToCalendar", function() {
-  console.log("Is this too much?");
-});
-
-$("#SearchBtn").on("click", function(e) {
+$("#searchBtn").on("click", function (e) {
   e.preventDefault();
   console.log("searchEvents");
   // if the word in the search bar is contained in the name of the event

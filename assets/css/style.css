@@ -1,14 +1,15 @@
 body {
-    background-color:white;
+    background-color: white;
     margin: 0 10% 0 10%;
 }
+
 .bg-light {
-    background-color: #565a8c!important;
+    background-color: #565a8c !important;
 }
 
 #link {
     font-size: 25px;
-    background-color: #565a8c!important;
+    background-color: #565a8c !important;
     color: white;
 }
 
@@ -21,9 +22,11 @@ body {
     color: white;
     border-color: white;
 }
+
 #navbar {
     padding-left: 150px;
 }
+
 .navbar-brand {
     color: white !important;
 }
@@ -38,4 +41,9 @@ body {
 
 .form-inline {
     padding-right: 150px;
+}
+
+.weatherInfo {
+    padding-left: 20px;
+    color: white;
 }
