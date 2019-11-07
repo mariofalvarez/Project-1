@@ -57,14 +57,6 @@ $.ajax({
       eventDateTime
     );
 
-    //var eventTime = results[i].dates.start.localTime;
-    eventImg.attr("src", results[i].images[i].url);
-    eventImg.width("64px");
-    eventImg.height("64px");
-    eventDiv.append(eventImg);
-    eventDiv.append(eventName);
-    eventDiv.append(eventDate);
-    //eventDiv.append(eventTime);
 
     $(".event_container").append(eventDiv);
   }
