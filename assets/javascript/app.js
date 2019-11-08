@@ -43,10 +43,12 @@ $(".btn").on("click", function(e) {
       let convertedDT = moment(eventDateTime).format("LLLL");
       let addBtn = $("<button>Add To Calendar</button>");
       addBtn.addClass("addToCalendar");
+      eventImg.addClass("eventImage");
+      eventDiv.addClass("stylinEvents");
       eventImg.attr("src", results[i].images[i].url);
       eventImg.width("200px");
       eventImg.height("150px");
-      eventDiv.append(eventImg, eventName, convertedDT, addBtn);
+      eventDiv.append(eventImg, eventName + "<br>" + convertedDT, addBtn);
       $(".event-container").append(eventDiv);
       var eventObject = {
         name: eventName,
