@@ -1,50 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!--Bootstrap CDN-->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <!--CSS Link for calendar-->
     <link rel="stylesheet" href="./assets/css/calendar.css" />
 
     <title>Calendar</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <nav class="navbar navbar-light bg-light" id="navbar">
-      <a class="navbar-brand">Event Toasts</a>
-      <form class="form-inline">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
-      </form>
+        <a class="navbar-brand">Event Toasts</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                Search
+            </button>
+        </form>
     </nav>
     <!--Link to to back to the homepage-->
     <a href="./index.html">Click Here To Redirect Back To Home Page</a>
     <div class="page">
-      <div style="width:100%; max-width:600px; display:inline-block;">
-        <div class="monthly" id="mycalendar"></div>
-      </div>
-      <br /><br />
+        <div style="width:100%; max-width:600px; display:inline-block;">
+            <div class="monthly" id="mycalendar"></div>
+        </div>
+        <br /><br />
 
-      <div style="display:inline-block; width:250px;">
-        <input type="text" id="mytarget" value="Select Date" />
-        <div class="monthly" id="mycalendar2"></div>
-      </div>
-      <br />
+        <div style="display:inline-block; width:250px;">
+            <input type="text" id="mytarget" value="Select Date" />
+            <div class="monthly" id="mycalendar2"></div>
+        </div>
+        <br />
     </div>
 
     <!-- Query JS-->
@@ -52,6 +44,7 @@
     <!-- calendar JS-->
     <script src="./assets/javascript/calendar.js"></script>
     <script type="text/javascript">
+
       $(window).load(function() {
         $("#mycalendar").monthly({
           mode: "event",
@@ -59,44 +52,35 @@
           //dataType: 'json'
           xmlUrl: "events.xml"
         });
-        $("#mycalendar2").monthly({
-          mode: "picker",
-          target: "#mytarget",
-          setWidth: "250px",
-          startHidden: true,
-          showTrigger: "#mytarget",
-          stylePast: true,
-          disablePast: true
-        });
-        switch (window.location.protocol) {
-          case "http:":
-          case "https:":
-            // running on a server, should be good.
-            break;
-          case "file:":
-          //  alert('Just a heads-up, events will not work when run locally.');
-        }
-      });
 
-      $("#mycalendar2").monthly({
-        mode: "picker",
-        target: "#mytarget",
-        setWidth: "250px",
-        startHidden: true,
-        showTrigger: "#mytarget",
-        stylePast: true,
-        disablePast: true
-      });
-      switch (window.location.protocol) {
-        case "http:":
-        case "https:":
-          // running on a server, should be good.
-          break;
-        case "file:":
-        //  alert('Just a heads-up, events will not work when run locally.');
-      }
+        $(window).load(function () {
+            $('#mycalendar').monthly({
+                mode: 'event',
+                //jsonUrl: 'events.json',
+                //dataType: 'json'
+                xmlUrl: 'events.xml'
+            });
+            $('#mycalendar2').monthly({
+                mode: 'picker',
+                target: '#mytarget',
+                setWidth: '250px',
+                startHidden: true,
+                showTrigger: '#mytarget',
+                stylePast: true,
+                disablePast: true
+            });
+            switch (window.location.protocol) {
+                case 'http:':
+                case 'https:':
+                    // running on a server, should be good.
+                    break;
+                case 'file:':
+                //  alert('Just a heads-up, events will not work when run locally.');
+            }
+        });
     </script>
 
     <script src="./assets/javascript/app.js"></script>
-  </body>
+</body>
+
 </html>
