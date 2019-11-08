@@ -10,6 +10,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <!--CSS Link for calendar-->
     <link rel="stylesheet" href="./assets/css/calendar.css" />
+    <link rel="index" href="./index.html">
 
     <title>Calendar</title>
 </head>
@@ -38,12 +39,16 @@
         </div>
         <br />
     </div>
+    <!--jQuery CDN-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
     <!-- Query JS-->
     <script src="./assets/javascript/query.js"></script>
     <!-- calendar JS-->
     <script src="./assets/javascript/calendar.js"></script>
     <script type="text/javascript">
+
 
         $(window).load(function () {
             $('#mycalendar').monthly({
@@ -52,47 +57,11 @@
                 //dataType: 'json'
                 xmlUrl: 'events.xml'
             });
-            $('#mycalendar2').monthly({
-                mode: 'picker',
-                target: '#mytarget',
-                setWidth: '250px',
-                startHidden: true,
-                showTrigger: '#mytarget',
-                stylePast: true,
-                disablePast: true
-            });
-            switch (window.location.protocol) {
-                case 'http:':
-                case 'https:':
-                    // running on a server, should be good.
-                    break;
-                case 'file:':
-                //  alert('Just a heads-up, events will not work when run locally.');
-            }
-
         });
-
-        $("#mycalendar2").monthly({
-            mode: "picker",
-            target: "#mytarget",
-            setWidth: "250px",
-            startHidden: true,
-            showTrigger: "#mytarget",
-            stylePast: true,
-            disablePast: true
-        });
-        switch (window.location.protocol) {
-            case "http:":
-            case "https:":
-                // running on a server, should be good.
-                break;
-            case "file:":
-            //  alert('Just a heads-up, events will not work when run locally.');
-        }
     </script>
-
-
+<!--User Js from App.js-->
     <script src="./assets/javascript/app.js"></script>
+
 </body>
 
 </html>
