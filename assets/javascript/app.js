@@ -31,30 +31,33 @@ $(".btn").on("click", function(e) {
     for (var i = 0; i < results.length; i++) {
       let eventDiv = $("<div>");
       let eventName = results[i].name;
+      let eventID = results[i].id;
       let eventImg = $("<img>");
       let addBtn = $("<button>Add To Event List</button>");
       let eventDateTime = results[i].dates.start.dateTime;
       let convertedDT = moment(eventDateTime).format("LLLL");
       let eventLocation = results[i]._embedded.venues[0].name;
-      let addBtn = $("<button>Add To Calendar</button>");
-      addBtn.addClass("addToCalendar");
-      eventImg.addClass("eventImage");
-      eventDiv.addClass("stylinEvents");
+      // let everything = [eventImg, ]
+      addBtn.addClass("addToEventList");
+      eventImg.addClass("img");
       eventImg.attr("src", results[i].images[4].url);
       eventImg.width("200px");
       eventImg.height("150px");
+      eventDiv.addClass("addToEvent");
       eventDiv.append(
         eventImg,
         eventName + "<br>" + eventLocation + "<br>" + convertedDT,
         addBtn
       );
-      $(".event-container").append(eventDiv);
+      $(".event-container").prepend(eventDiv);
       var eventObject = {
+        id: eventID,
         name: eventName,
         where: eventLocation,
         when: convertedDT
       };
-      addBtn.attr("data", eventObject.when);
+      addBtn.attr("data", eventObject.id);
+      //console.log(eventObject.id);
       events.push(eventObject);
     }
   });
@@ -77,17 +80,21 @@ let database = firebase.database();
 
 var events = [];
 
+console.log(events);
+
 $(".event-container").on("click", ".addToEventList", function() {
   //Create a var to hold the event name, location, and the time
-  let eventName = $(".addToEvent");
-
+  // let eventName = $(".addToEvent");
+  // $(this).attr("data", events);
+  // console.log($(this).attr("data"));
+  database.ref().push(events);
   //Gtrab the event and append it to a new table cell
 
   //Create a new table cell which holds all the data.
   var newRow = $("<tr>").append(
-    $("<td>").text(eventName),
-    $("<td>").text(eventLocation),
-    $("<td>").text(eventTime)
+    $("<td>").append(events.name),
+    $("<td>").append(events.where),
+    $("<td>").append(events.when)
   );
 
   //Append the new row to the table

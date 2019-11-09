@@ -48,7 +48,7 @@ body {
   color: white;
 }
 
-.stylinEvents {
+.addToEvent {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
@@ -61,13 +61,13 @@ body {
   color: #565a8c;
 }
 
-.eventImage {
+.img {
   margin: 10px;
   float: left;
   border-radius: 3px;
 }
 
-.addToCalendar {
+.addToEventList {
   padding: 20px;
   background-color: #565a8c;
   color: white;
