@@ -16,8 +16,8 @@ $(".btn").on("click", function(e) {
     method: "GET",
     url: weatherUrl
   }).then(response => {
-    $(".weatherInfo").html(Math.floor((response.data[0].temp * 9) / 5 + 32));
-    $(".weatherInfo").append(`<div><span>&#8457;</span></div>`);
+    $(".weatherInfo").html(Math.floor((response.data[0].temp * 9) / 5 + 32) + ` <span>&#8457;</span>`);
+    // $(".weatherInfo").append(`<div><span>&#8457;</span></div>`);
   });
 
   // Ticketmaster api
@@ -36,7 +36,7 @@ $(".btn").on("click", function(e) {
       let eventDateTime = results[i].dates.start.dateTime;
       let convertedDT = moment(eventDateTime).format("LLLL");
       let eventLocation = results[i]._embedded.venues[0].name;
-      let addBtn = $("<button>Add To Calendar</button>");
+      // let addBtn = $("<button>Add To Calendar</button>");
       addBtn.addClass("addToCalendar");
       eventImg.addClass("eventImage");
       eventDiv.addClass("stylinEvents");
@@ -45,7 +45,7 @@ $(".btn").on("click", function(e) {
       eventImg.height("150px");
       eventDiv.append(
         eventImg,
-        eventName + "<br>" + eventLocation + "<br>" + convertedDT,
+        eventName + "<br>" + eventLocation + "<br>" + convertedDT + "<br>", 
         addBtn
       );
       $(".event-container").append(eventDiv);
@@ -77,12 +77,21 @@ let database = firebase.database();
 
 var events = [];
 
-$(".event-container").on("click", ".addToEventList", function() {
+$(".event-container").on("click", ".addTocalender", function() {
   //Create a var to hold the event name, location, and the time
-  let eventName = $(".addToEvent");
-
+  
   //Gtrab the event and append it to a new table cell
+  
+  // let eventName = $(".addToEvent");
+  // const eventInfo = $('.stylinEvents').text();
+  // let eventID = results[i].id;
+  // let newEvent = { 
+  // name: eventName,
+  // id: eventID
+ 
 
+
+  database.ref().push(newEvent);
   //Create a new table cell which holds all the data.
   var newRow = $("<tr>").append(
     $("<td>").text(eventName),

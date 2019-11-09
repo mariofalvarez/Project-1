@@ -18,7 +18,13 @@ body {
   margin: 0 auto;
 }
 
-.btn-outline-success {
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #B4C6C2;
+  border-color: white;
+}
+
+.btn-outline-light {
   color: white;
   border-color: white;
 }
@@ -68,10 +74,11 @@ body {
 }
 
 .addToCalendar {
-  padding: 20px;
+  padding: 10px;
   background-color: #565a8c;
   color: white;
   border: none;
   border-radius: 3px;
   margin-top: 20px;
+  
 }
