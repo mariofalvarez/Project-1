@@ -79,6 +79,7 @@ firebase.initializeApp(firebaseConfig);
 let database = firebase.database();
 
 var events = [];
+
 console.log(events);
 
 $(".event-container").on("click", ".addToEventList", function() {
