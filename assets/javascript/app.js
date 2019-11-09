@@ -41,17 +41,23 @@ $(".btn").on("click", function(e) {
       let eventImg = $("<img>");
       let eventDateTime = results[i].dates.start.dateTime;
       let convertedDT = moment(eventDateTime).format("LLLL");
+      let eventLocation = results[i]._embedded.venues[0].name;
       let addBtn = $("<button>Add To Calendar</button>");
       addBtn.addClass("addToCalendar");
       eventImg.addClass("eventImage");
       eventDiv.addClass("stylinEvents");
-      eventImg.attr("src", results[i].images[i].url);
+      eventImg.attr("src", results[i].images[4].url);
       eventImg.width("200px");
       eventImg.height("150px");
-      eventDiv.append(eventImg, eventName + "<br>" + convertedDT, addBtn);
+      eventDiv.append(
+        eventImg,
+        eventName + "<br>" + eventLocation + "<br>" + convertedDT,
+        addBtn
+      );
       $(".event-container").append(eventDiv);
       var eventObject = {
         name: eventName,
+        where: eventLocation,
         when: convertedDT
       };
       addBtn.attr("data", eventObject.when);
