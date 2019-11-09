@@ -35,17 +35,27 @@ $(".btn").on("click", function(e) {
       let addBtn = $("<button>Add To Event List</button>");
       let eventDateTime = results[i].dates.start.dateTime;
       let convertedDT = moment(eventDateTime).format("LLLL");
-      addBtn.addClass("addToEventList");
-      addBtn.attr("data", eventName);
-      eventImg.attr("src", results[i].images[i].url);
-      eventImg.width("64px");
-      eventImg.height("64px");
-      eventImg.addClass("img"); //added a class to the img
-      eventDiv.addClass("addToEvent"); //created a class to the eventDiv with the class name addToEvent
-      eventDiv.append(eventImg, eventName, convertedDT, addBtn);
-      console.log(eventDiv);
-
-      $(".event-container").prepend(eventDiv);
+      let eventLocation = results[i]._embedded.venues[0].name;
+      let addBtn = $("<button>Add To Calendar</button>");
+      addBtn.addClass("addToCalendar");
+      eventImg.addClass("eventImage");
+      eventDiv.addClass("stylinEvents");
+      eventImg.attr("src", results[i].images[4].url);
+      eventImg.width("200px");
+      eventImg.height("150px");
+      eventDiv.append(
+        eventImg,
+        eventName + "<br>" + eventLocation + "<br>" + convertedDT,
+        addBtn
+      );
+      $(".event-container").append(eventDiv);
+      var eventObject = {
+        name: eventName,
+        where: eventLocation,
+        when: convertedDT
+      };
+      addBtn.attr("data", eventObject.when);
+      events.push(eventObject);
     }
   });
 });

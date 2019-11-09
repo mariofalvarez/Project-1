@@ -1,49 +1,77 @@
 body {
-    background-color: white;
-    margin: 0 10% 0 10%;
+  background-color: white;
+  margin: 0 10% 0 10%;
 }
 
 .bg-light {
-    background-color: #565a8c !important;
+  background-color: #565a8c !important;
 }
 
 #link {
-    font-size: 25px;
-    background-color: #565a8c !important;
-    color: white;
+  font-size: 25px;
+  background-color: #565a8c !important;
+  color: white;
 }
 
 .carouselContainer {
-    width: 100%;
-    margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .btn-outline-success {
-    color: white;
-    border-color: white;
+  color: white;
+  border-color: white;
 }
 
 #navbar {
-    padding-left: 150px;
+  padding-left: 150px;
 }
 
 .navbar-brand {
-    color: white !important;
+  color: white !important;
 }
 
 .form-inline {
-    padding-right: 150px;
+  padding-right: 150px;
 }
 
 #navbar {
-    padding-left: 150px;
+  padding-left: 150px;
 }
 
 .form-inline {
-    padding-right: 150px;
+  padding-right: 150px;
 }
 
 .weatherInfo {
-    padding-left: 20px;
-    color: white;
+  padding-left: 20px;
+  color: white;
+}
+
+.stylinEvents {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  border: 0.5px solid #565a8cda;
+  border-radius: 3px;
+  margin: 10px;
+  padding: 10px;
+  width: 800px;
+  height: 200px;
+  color: #565a8c;
+}
+
+.eventImage {
+  margin: 10px;
+  float: left;
+  border-radius: 3px;
+}
+
+.addToCalendar {
+  padding: 20px;
+  background-color: #565a8c;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  margin-top: 20px;
 }
