@@ -6,7 +6,7 @@ Welcome to Event Toast, our event locating app! Where the breadcrumbs to your ne
 
 ### Group:
 
-| Members       | GitHub Link                      |
+| Team          | GitHub Link                      |
 | ------------- | -------------------------------- |
 | Herman Liu    | https://github.com/hermsicle     |
 | Jimmy Nguyen  | https://github.com/jimnguyen26   |
@@ -25,5 +25,7 @@ Welcome to Event Toast, our event locating app! Where the breadcrumbs to your ne
 - TicketMaster API
 - Weatherbit API
 - Github
+
+### Description:
 
 Our project allows you to search through a list of events provided by the ticket master API and add them to a list of saved events. These events are stored to firebase, so the user can see events that they have previously saved. The search query will also show you the current weather in any city.

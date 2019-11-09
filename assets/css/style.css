@@ -7,18 +7,20 @@ body {
   background-size: cover;
 }
 
-/* Flexbox Stlying */
-
-
-/* #navbar {
-  background-attachment: fixed;
-} */
-/* Title font color */
-.navbar-brand {
-  color: white !important;
+/* Flexbox settings */
+@media(min-width: 600px) {
+  .container {
+    display: flex;
+  }
 }
 
-/* Navbar background color */
+/* Navbar Container */
+.navbar-brand {
+  color: white !important;
+  font-size: 40px;
+  padding: 15px 15px 0 30px;
+}
+
 .bg-light {
   background-color: #55357a !important;
 }
@@ -36,10 +38,19 @@ body {
 }
 
 /* Weather API on navbar */
-.weatherInfo {
-  padding-left: 20px;
-  color: white;
+.weather-info {
   background-position: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  color: white;
+  padding: 8px;
+  font-size: 30px;
+}
+
+/* Saved Events Container */
+.card {
+  border: 2px solid #55357a;
+  margin: 10px;
 }
 
 /* Styling for Event Container, Event Image, & Event Add btn */
@@ -52,7 +63,6 @@ body {
   font-size: 20px;
   margin: 10px;
   padding: 10px;
-  width: 50%;
   height: 10%;
 }
 

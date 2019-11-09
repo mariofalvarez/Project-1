@@ -16,7 +16,7 @@ $(".btn").on("click", function (e) {
     method: "GET",
     url: weatherUrl
   }).then(response => {
-    $(".weatherInfo").html(Math.floor((response.data[0].temp * 9) / 5 + 32) + ` <span>&#8457;</span>`);
+    $(".weather-info").html(Math.floor((response.data[0].temp * 9) / 5 + 32) + `<span>&#8457;</span>`);
   });
 
   // Ticketmaster api
@@ -114,7 +114,6 @@ database.ref().on('child_added', function (childSnapshot) {
     $('<td>').text(eventName),
     $('<td>').text(eventLocation),
     $('<td>').text(eventTime)
-
   );
 
   //Append the new row to the table

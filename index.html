@@ -18,40 +18,49 @@
 
 <body>
 
-  <!-- NavBar -->
-  <nav class="navbar navbar-light bg-light" id="navbar">
-    <a class="navbar-brand">Event Toast</a>
+  <!-- Search Query -->
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand"><span class="icon">Event Toast<img src="./assets/images/icon.png"
+          style="height: 50px; width: 50px;" /></span></a>
+    <div class="weather-info"></div>
     <form class="form-inline">
       <input class="form-control mr-sm-2" type="search" placeholder="Search City Here" id="text" />
       <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Submit</button>
-      <div class="weatherInfo"></div>
     </form>
   </nav>
 
-  <!--Event List Container-->
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="card mb-4">
-        <div class="card-header" id="eventList">My Current Events</div>
-        <div class="card-body">
-          <table class="table table-sm table-hover" id="event-table">
-            <thead>
-              <tr>
-                <th scope="col">Event Name</th>
-                <th scope="col">Event Time</th>
-                <th scope="col">Location</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
+  <div class="container">
+    <div class="box-1">
+
+      <!-- Saved Events Container -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card mb-4">
+            <div class="card-header">My Saved Events</div>
+            <div class="card-body">
+              <table class="table table-sm table-hover" id="event-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event Name</th>
+                    <th scope="col">Event Time</th>
+                    <th scope="col">Location</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Event Container -->
-  <div class="event-container"></div>
+    <div class="box-2">
+      <!-- Searched Events Container -->
+      <div class="event-container">
+      </div>
+    </div>
+  </div>
 
   <!-- External Links -->
   <!--Moment JS CDN-->
