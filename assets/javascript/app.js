@@ -17,7 +17,7 @@ firebase.initializeApp(firebaseConfig);
 let database = firebase.database();
 
 // Initialize Search Query
-$(".btn").on("click", function(e) {
+$(".btn").on("click", function (e) {
   e.preventDefault();
   let city = $(".form-control").val();
   let newCity = $(".form-control").val();
@@ -75,31 +75,31 @@ $(".btn").on("click", function(e) {
 });
 
 var events = [];
+
 console.log(events);
 
-$(".event-container").on("click", ".addToEventList", function() {
+$(".event-container").on("click", ".addToEventList", function () {
   //Create a var to hold the event name, location, and the time
   var saveEvent = $(this).attr("data");
-  console.log(saveEvent);
 
   for (var i = 0; i < events.length; i++) {
-    //  if (saveEvent == events[i].id) {
+ 
     if (saveEvent === events[i].id) {
       database.ref().push(events[i]);
     }
   }
   //Gtrab the event and append it to a new table cell
   //Create a new table cell which holds all the data.
-  // var newRow = $("<tr>").append(
-  //   $("<td>").append(events[i]),
-  //   $("<td>").append(events.where),
-  //   $("<td>").append(events.when)
-  // );
-  //Append the new row to the table
-  //$("#eventList > tbody").append(newRow);
+
+  var newRow = $("<tr>").append(
+    $("<td>").append(events.name),
+    $("<td>").append(events.where),
+    $("<td>").append(events.when)
+  );
+
 });
 
-$("#searchBtn").on("click", function(e) {
+$("#searchBtn").on("click", function (e) {
   e.preventDefault();
   //console.log("searchEvents");
   // if the word in the search bar is contained in the name of the event
