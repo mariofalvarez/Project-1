@@ -1,20 +1,6 @@
 // $(document).ready(function() {
 //   console.log("works");
 // });
-// Firebase api
-var firebaseConfig = {
-  apiKey: "AIzaSyCwAF0G8GY_NBThEADQZIBFxqjuQ7XuEeI",
-  authDomain: "project-1-ea220.firebaseapp.com",
-  databaseURL: "https://project-1-ea220.firebaseio.com",
-  projectId: "project-1-ea220",
-  storageBucket: "project-1-ea220.appspot.com",
-  messagingSenderId: "22912965609",
-  appId: "1:22912965609:web:dc40a770ed9225487f4978"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-let database = firebase.database();
 
 // Initialize Search Query
 $(".btn").on("click", function (e) {
@@ -40,6 +26,7 @@ $(".btn").on("click", function (e) {
     method: "GET"
   }).then(data => {
     const results = data._embedded.events;
+    // console.log(results);
 
     for (var i = 0; i < results.length; i++) {
       let eventDiv = $("<div>");
@@ -50,6 +37,8 @@ $(".btn").on("click", function (e) {
       let eventDateTime = results[i].dates.start.dateTime;
       let convertedDT = moment(eventDateTime).format("LLLL");
       let eventLocation = results[i]._embedded.venues[0].name;
+      
+      // let everything = [eventImg, ]
 
       addBtn.addClass("addToEventList");
       eventImg.addClass("img");
@@ -63,6 +52,7 @@ $(".btn").on("click", function (e) {
         eventName + "<br>" + eventLocation + "<br>" + convertedDT + "<br>", 
         addBtn
       );
+      $('#text').val(''); //emptys out the
       $(".event-container").prepend(eventDiv);
       var eventObject = {
         id: eventID,
@@ -71,48 +61,65 @@ $(".btn").on("click", function (e) {
         when: convertedDT
       };
       addBtn.attr("data", eventObject.id);
+      //console.log(eventObject.id);
       events.push(eventObject);
     }
   });
 });
 
+// Firebase api
+var firebaseConfig = {
+  apiKey: "AIzaSyCwAF0G8GY_NBThEADQZIBFxqjuQ7XuEeI",
+  authDomain: "project-1-ea220.firebaseapp.com",
+  databaseURL: "https://project-1-ea220.firebaseio.com",
+  projectId: "project-1-ea220",
+  storageBucket: "project-1-ea220.appspot.com",
+  messagingSenderId: "22912965609",
+  appId: "1:22912965609:web:dc40a770ed9225487f4978"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+let database = firebase.database()
+
 var events = [];
 
-console.log(events);
+//console.log(events);
 
 $(".event-container").on("click", ".addToEventList", function () {
   //Create a var to hold the event name, location, and the time
   var saveEvent = $(this).attr("data");
 
   for (var i = 0; i < events.length; i++) {
- 
+
     if (saveEvent === events[i].id) {
       database.ref().push(events[i]);
     }
   }
-  //Gtrab the event and append it to a new table cell
+})
 
-  //Create a new table cell which holds all the data.
+//create a function that takes out the data from the firebase
+database.ref().on('child_added', function (childSnapshot) {
+  console.log(childSnapshot.val()); //This logs all the data from firebase 
 
-  var newRow = $("<tr>").append(
-    $("<td>").append(events.name),
-    $("<td>").append(events.where),
-    $("<td>").append(events.when)
+  //Lets store everything into variables
+  var eventName = childSnapshot.val().name;
+  var eventLocation = childSnapshot.val().when;
+  var eventTime = childSnapshot.val().where;
+
+  console.log(eventName);
+  console.log(eventLocation);
+  console.log(eventTime);
+
+  //Create a new row to the dom 
+  var newRow = $('<tr>').append(
+    $('<td>').text(eventName),
+    $('<td>').text(eventLocation),
+    $('<td>').text(eventTime)
+
   );
 
+  //Append the new row to the table
+  $('#event-table > tbody').append(newRow);
+
 });
-
-$("#searchBtn").on("click", function (e) {
-  e.preventDefault();
-  //console.log("searchEvents");
-  // if the word in the search bar is contained in the name of the event
-  // show event.
-});
-
-// testing();
-
-// function testing() {
-//   var eventDateTime = results[i].dates.start.dateTime;
-
-//   var newTime = moment(eventDateTime).format("LLLL");
-// }
