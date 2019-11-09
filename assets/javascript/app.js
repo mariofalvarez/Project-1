@@ -17,7 +17,6 @@ $(".btn").on("click", function (e) {
     url: weatherUrl
   }).then(response => {
     $(".weatherInfo").html(Math.floor((response.data[0].temp * 9) / 5 + 32) + ` <span>&#8457;</span>`);
-    // $(".weatherInfo").append(`<div><span>&#8457;</span></div>`);
   });
 
   // Ticketmaster api
@@ -37,7 +36,6 @@ $(".btn").on("click", function (e) {
       let eventDateTime = results[i].dates.start.dateTime;
       let convertedDT = moment(eventDateTime).format("LLLL");
       let eventLocation = results[i]._embedded.venues[0].name;
-      
       // let everything = [eventImg, ]
 
       addBtn.addClass("addToEventList");
@@ -49,7 +47,7 @@ $(".btn").on("click", function (e) {
       eventDiv.addClass("addToEvent");
       eventDiv.append(
         eventImg,
-        eventName + "<br>" + eventLocation + "<br>" + convertedDT + "<br>", 
+        eventName + "<br>" + eventLocation + "<br>" + convertedDT + "<br>",
         addBtn
       );
       $('#text').val(''); //emptys out the

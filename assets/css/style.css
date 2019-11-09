@@ -1,26 +1,32 @@
 body {
-  background-color: white;
-  margin: 0 10% 0 10%;
+  background-image: url("../images/event-photo.jpg");
+  min-height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 
+/* Flexbox Stlying */
+
+
+/* #navbar {
+  background-attachment: fixed;
+} */
+/* Title font color */
+.navbar-brand {
+  color: white !important;
+}
+
+/* Navbar background color */
 .bg-light {
-  background-color: #565a8c !important;
+  background-color: #55357a !important;
 }
 
-#link {
-  font-size: 25px;
-  background-color: #565a8c !important;
-  color: white;
-}
-
-.carouselContainer {
-  width: 100%;
-  margin: 0 auto;
-}
-
+/* Search Bar submit button feature */
 .btn-outline-primary:hover {
   color: white;
-  background-color: #B4C6C2;
+  background-color: white;
   border-color: white;
 }
 
@@ -29,56 +35,42 @@ body {
   border-color: white;
 }
 
-#navbar {
-  padding-left: 150px;
-}
-
-.navbar-brand {
-  color: white !important;
-}
-
-.form-inline {
-  padding-right: 150px;
-}
-
-#navbar {
-  padding-left: 150px;
-}
-
-.form-inline {
-  padding-right: 150px;
-}
-
+/* Weather API on navbar */
 .weatherInfo {
   padding-left: 20px;
   color: white;
+  background-position: center;
 }
 
+/* Styling for Event Container, Event Image, & Event Add btn */
 .addToEvent {
-  font-size: 20px;
-  font-weight: bold;
+  background-color: white;
+  border: 2px solid #55357a;
+  border-radius: 10px;
+  color: black;
   text-align: center;
-  border: 0.5px solid #565a8cda;
-  border-radius: 3px;
+  font-size: 20px;
   margin: 10px;
   padding: 10px;
-  width: 800px;
-  height: 200px;
-  color: #565a8c;
+  width: 50%;
+  height: 10%;
 }
 
 .img {
-  margin: 10px;
   float: left;
-  border-radius: 3px;
+  padding-bottom: 16px;
 }
 
 .addToEventList {
-  padding: 20px;
-  background-color: #565a8c;
+  background-color: #55357a;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 50px;
   margin-top: 20px;
-  
+  padding: 15px;
+}
+
+.addToEventList:hover {
+  background-color: #9462ce;
+  color: white;
 }
