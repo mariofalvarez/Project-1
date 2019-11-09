@@ -16,8 +16,8 @@ $(".btn").on("click", function (e) {
     method: "GET",
     url: weatherUrl
   }).then(response => {
-    $(".weatherInfo").html(Math.floor((response.data[0].temp * 9) / 5 + 32));
-    $(".weatherInfo").append(`<div><span>&#8457;</span></div>`);
+    $(".weatherInfo").html(Math.floor((response.data[0].temp * 9) / 5 + 32) + ` <span>&#8457;</span>`);
+    // $(".weatherInfo").append(`<div><span>&#8457;</span></div>`);
   });
 
   // Ticketmaster api
@@ -37,16 +37,19 @@ $(".btn").on("click", function (e) {
       let eventDateTime = results[i].dates.start.dateTime;
       let convertedDT = moment(eventDateTime).format("LLLL");
       let eventLocation = results[i]._embedded.venues[0].name;
+      
       // let everything = [eventImg, ]
+
       addBtn.addClass("addToEventList");
       eventImg.addClass("img");
+
       eventImg.attr("src", results[i].images[4].url);
       eventImg.width("200px");
       eventImg.height("150px");
       eventDiv.addClass("addToEvent");
       eventDiv.append(
         eventImg,
-        eventName + "<br>" + eventLocation + "<br>" + convertedDT,
+        eventName + "<br>" + eventLocation + "<br>" + convertedDT + "<br>", 
         addBtn
       );
       $('#text').val(''); //emptys out the
@@ -113,6 +116,7 @@ database.ref().on('child_added', function (childSnapshot) {
     $('<td>').text(eventName),
     $('<td>').text(eventLocation),
     $('<td>').text(eventTime)
+
   );
 
   //Append the new row to the table
